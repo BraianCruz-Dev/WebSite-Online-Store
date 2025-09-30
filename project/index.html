@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Loja Online - StreetWear</title>
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-text-primary: #111827;
+      --color-text-secondary: #6b7280;
+      --color-accent: #111827;
+      --color-accent-hover: #4b5563;
+      --color-card-bg: #f9fafb;
+      --color-card-shadow: rgba(0,0,0,0.05);
+      --border-radius: 0.75rem;
+      --font-family-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      --font-family-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      --transition-speed: 0.3s;
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@700&display=swap');
+
+    /* Reset and basic */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      font-family: var(--font-family-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      scroll-padding-top: 5rem;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color var(--transition-speed);
+    }
+    a:hover,
+    a:focus {
+      color: var(--color-accent-hover);
+      outline: none;
+    }
+    button {
+      font-family: var(--font-family-body);
+      cursor: pointer;
+      background-color: var(--color-accent);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background-color var(--transition-speed), transform var(--transition-speed);
+    }
+    button:hover,
+    button:focus {
+      background-color: var(--color-accent-hover);
+      transform: scale(1.05);
+      outline: none;
+    }
+    h1, h2, h3 {
+      margin: 0 0 0.5rem 0;
+      font-family: var(--font-family-heading);
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.2;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+    }
+    h2 {
+      font-size: 1.75rem;
+      margin-top: 0;
+      font-weight: 700;
+    }
+    p {
+      color: var(--color-text-secondary);
+      margin-top: 0;
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+    }
+    /* Container */
+    .container {
+      max-width: 1200px;
+      width: 90%;
+      margin: 0 auto;
+    }
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgb(255, 255, 255);
+      border-bottom: 1px solid #ffffff;
+      z-index: 100;
+      box-shadow: 0 1px 3px var(--color-card-shadow);
+    }
+    
+  ul.nav-links li a {
+    text-decoration: none;
+    color: #e0e6ff;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 8px 12px;
+    border-radius: 12px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  ul.nav-links li a:hover,
+  ul.nav-links li a:focus {
+    background: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    outline: none;
+    box-shadow: 0 0 8px #ffffffa0;
+  }
+  /* Responsive - Collapses nav links on smaller screens */
+  @media (max-width: 640px) {
+    nav {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 16px;
+    }
+    ul.nav-links {
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 16px;
+    }
+  }
+    /* Hero section */
+    .hero {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      text-align: center;
+      background: linear-gradient(135deg, #e0e7ff 0%, #ffffff 100%);
+      margin-bottom: 3rem;
+    }
+    .hero h1 {
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero p {
+      max-width: 450px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      color: var(--color-text-secondary);
+    }
+    .hero .cta-button {
+      font-size: 1.125rem;
+      padding: 1rem 2.5rem;
+      border-radius: var(--border-radius);
+      background-color: var(--color-accent);
+      color: white;
+      font-weight: 700;
+      box-shadow: 0 8px 15px rgba(17, 24, 39, 0.2);
+      transition: background-color var(--transition-speed), transform var(--transition-speed);
+      text-transform: uppercase;
+    }
+    .hero .cta-button:hover,
+    .hero .cta-button:focus {
+      background-color: var(--color-accent-hover);
+      transform: scale(1.05);
+      outline: none;
+    }
+    /* Catalog grid */
+    .catalog {
+      padding-bottom: 4rem;
+    }
+    .catalog h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      background-color: var(--color-card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 8px var(--color-card-shadow);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow var(--transition-speed);
+    }
+    .product-card:hover,
+    .product-card:focus-within {
+      box-shadow: 0 8px 20px rgba(17,24,39,0.12);
+      outline: none;
+    }
+    .product-image {
+      border-top-left-radius: var(--border-radius);
+      border-top-right-radius: var(--border-radius);
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      user-select: none;
+    }
+    .product-info {
+      flex-grow: 1;
+      padding: 1rem 1.25rem 1.5rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .product-title {
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--color-text-primary);
+      margin-bottom: 0.25rem;
+    }
+    .product-description {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      flex-grow: 1;
+      margin-bottom: 0.75rem;
+    }
+    .product-price {
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--color-accent);
+      margin-bottom: 1rem;
+    }
+    .add-to-cart-btn {
+      align-self: stretch;
+      background-color: var(--color-accent);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius);
+      padding: 0.75rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color var(--transition-speed), transform var(--transition-speed);
+      user-select: none;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    .add-to-cart-btn:hover,
+    .add-to-cart-btn:focus {
+      background-color: var(--color-accent-hover);
+      transform: scale(1.05);
+      outline: none;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+      border-top: 1px solid #e5e7eb;
+      user-select: none;
+    }
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 2.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <nav class="container" aria-label="Primary Navigation">
+      <div class="logo" tabindex="0">Loja FX</div>
+      <div class="nav-links">
+        <a href="#catalog" tabindex="0">Catálogo</a>
+        <a href="#sobre" tabindex="0">Sobre</a>
+        <a href="#contato" tabindex="0">Contato</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">A Melhor Loja de StreetWear</h1>
+      <p>Encontre tudo que você precisa com qualidade, preço justo e entrega rápida.</p>
+      <button class="cta-button" onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})">Explore o Catálogo</button>
+    </section>
+
+    <section id="catalog" class="catalog container" aria-labelledby="catalog-title">
+      <h2 id="catalog-title">Catálogo de Produtos</h2>
+      <div class="products-grid" role="list">
+        <!-- Product cards -->
+        <article class="product-card" role="listitem" tabindex="0" aria-label="Camiseta Estilo Casual">
+          <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" alt="Camiseta Estilo Casual" class="product-image" loading="lazy" />
+          <div class="product-info">
+            <h3 class="product-title">Camiseta Estilo Casual</h3>
+            <p class="product-description">Camiseta 100% algodão, confortável para o dia a dia.</p>
+            <div class="product-price">R$ 49,90</div>
+            <button class="add-to-cart-btn" aria-label="Adicionar Camiseta Estilo Casual ao carrinho">Adicionar ao Carrinho</button>
+          </div>
+        </article>
+
+        <article class="product-card" role="listitem" tabindex="0" aria-label="Tênis Esportivo Masculino">
+          <img src="https://images.unsplash.com/photo-1600185360810-8c15eda966f0?auto=format&fit=crop&w=400&q=80" alt="Tênis Esportivo Masculino" class="product-image" loading="lazy" />
+          <div class="product-info">
+            <h3 class="product-title">Tênis Esportivo Masculino</h3>
+            <p class="product-description">Perfeito para corrida ou uso casual, com ótimo amortecimento.</p>
+            <div class="product-price">R$ 229,90</div>
+            <button class="add-to-cart-btn" aria-label="Adicionar Tênis Esportivo Masculino ao carrinho">Adicionar ao Carrinho</button>
+          </div>
+        </article>
+
+        <article class="product-card" role="listitem" tabindex="0" aria-label="Mochila para Notebook">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Mochila para Notebook" class="product-image" loading="lazy" />
+          <div class="product-info">
+            <h3 class="product-title">Mochila para Notebook</h3>
+            <p class="product-description">Espaçosa, com proteção acolchoada para seu notebook de até 15''.</p>
+            <div class="product-price">R$ 179,90</div>
+            <button class="add-to-cart-btn" aria-label="Adicionar Mochila para Notebook ao carrinho">Adicionar ao Carrinho</button>
+          </div>
+        </article>
+
+        <article class="product-card" role="listitem" tabindex="0" aria-label="Relógio Digital Esportivo">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80" alt="Relógio Digital Esportivo" class="product-image" loading="lazy" />
+          <div class="product-info">
+            <h3 class="product-title">Relógio Digital Esportivo</h3>
+            <p class="product-description">Funções modernas para monitorar suas atividades físicas.</p>
+            <div class="product-price">R$ 89,90</div>
+            <button class="add-to-cart-btn" aria-label="Adicionar Relógio Digital Esportivo ao carrinho">Adicionar ao Carrinho</button>
+          </div>
+        </article>
+
+        <article class="product-card" role="listitem" tabindex="0" aria-label="Óculos de Sol Estiloso">
+          <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=400&q=80" alt="Óculos de Sol Estiloso" class="product-image" loading="lazy" />
+          <div class="product-info">
+            <h3 class="product-title">Óculos de Sol Estiloso</h3>
+            <p class="product-description">Design moderno e proteção UV para seus olhos.</p>
+            <div class="product-price">R$ 129,90</div>
+            <button class="add-to-cart-btn" aria-label="Adicionar Óculos de Sol Estiloso ao carrinho">Adicionar ao Carrinho</button>
+          </div>
+        </article>
+
+        <article class="product-card" role="listitem" tabindex="0" aria-label="Fone de Ouvido Bluetooth">
+          <img src="https://images.unsplash.com/photo-1516707570262-2f9513ac3549?auto=format&fit=crop&w=400&q=80" alt="Fone de Ouvido Bluetooth" class="product-image" loading="lazy" />
+          <div class="product-info">
+            <h3 class="product-title">Fone de Ouvido Bluetooth</h3>
+            <p class="product-description">Leve, confortável e com som de alta qualidade.</p>
+            <div class="product-price">R$ 199,90</div>
+            <button class="add-to-cart-btn" aria-label="Adicionar Fone de Ouvido Bluetooth ao carrinho">Adicionar ao Carrinho</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="sobre" class="container" style="padding-bottom:4rem;">
+      <h2>Sobre a Loja</h2>
+      <p>
+        Somos uma loja online dedicada a oferecer produtos de qualidade com o melhor custo-benefício. Nosso objetivo é garantir a satisfação total dos nossos clientes com uma experiência de compra segura e intuitiva.
+      </p>
+    </section>
+
+    <section id="contato" class="container" style="padding-bottom:4rem;">
+      <h2>Contato</h2>
+      <p>Quer conversar? Envie um e-mail para <a href="mailto:contato@lojaonline.com">contato@lojaonline.com</a> ou ligue para (11) 90000-0000.</p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2024 Loja Online. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    // Simple "Add to cart" button feedback
+    document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        button.textContent = 'Adicionado ✓';
+        button.disabled = true;
+        setTimeout(() => {
+          button.textContent = 'Adicionar ao Carrinho';
+          button.disabled = false;
+        }, 2000);
+      });
+    });
+  </script>
+</body>
+</html>
