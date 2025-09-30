@@ -22,7 +22,6 @@
     }
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@700&display=swap');
 
-    /* Reset and basic */
     *, *::before, *::after {
       box-sizing: border-box;
     }
@@ -90,13 +89,13 @@
       margin-bottom: 1.25rem;
       font-size: 1rem;
     }
-    /* Container */
+
     .container {
       max-width: 1200px;
       width: 90%;
       margin: 0 auto;
     }
-    /* Header */
+
     header {
       position: sticky;
       top: 0;
@@ -122,7 +121,7 @@
     outline: none;
     box-shadow: 0 0 8px #ffffffa0;
   }
-  /* Responsive - Collapses nav links on smaller screens */
+
   @media (max-width: 640px) {
     nav {
       flex-direction: column;
@@ -135,7 +134,7 @@
       margin-top: 16px;
     }
   }
-    /* Hero section */
+
     .hero {
       padding-top: 4rem;
       padding-bottom: 4rem;
@@ -173,7 +172,7 @@
       transform: scale(1.05);
       outline: none;
     }
-    /* Catalog grid */
+    
     .catalog {
       padding-bottom: 4rem;
     }
@@ -253,7 +252,7 @@
       transform: scale(1.05);
       outline: none;
     }
-    /* Footer */
+
     footer {
       text-align: center;
       padding: 2rem 1rem;
@@ -262,7 +261,6 @@
       border-top: 1px solid #e5e7eb;
       user-select: none;
     }
-    /* Responsive adjustments */
     @media (max-width: 640px) {
       h1 {
         font-size: 2.25rem;
@@ -292,9 +290,8 @@
     <section id="catalog" class="catalog container" aria-labelledby="catalog-title">
       <h2 id="catalog-title">Catálogo de Produtos</h2>
       <div class="products-grid" role="list">
-        <!-- Product cards -->
         <article class="product-card" role="listitem" tabindex="0" aria-label="Camiseta Estilo Casual">
-          <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" alt="Camiseta Estilo Casual" class="product-image" loading="lazy" />
+          <img src="menino-em-camiseta-branca-camisa-floral-bone-mostrando-sinal-de-ok-e-fazendo-gestos-com-as-maos-e-parecendo-confiante_176474-61376.jpng" alt="Camiseta Estilo Casual" class="product-image" loading="lazy" />
           <div class="product-info">
             <h3 class="product-title">Camiseta Estilo Casual</h3>
             <p class="product-description">Camiseta 100% algodão, confortável para o dia a dia.</p>
@@ -373,7 +370,6 @@
   </footer>
 
   <script>
-    // Simple "Add to cart" button feedback
     document.querySelectorAll('.add-to-cart-btn').forEach(button => {
       button.addEventListener('click', () => {
         button.textContent = 'Adicionado ✓';
